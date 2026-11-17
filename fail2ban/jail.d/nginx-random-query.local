@@ -1,0 +1,12 @@
+# Бан на уровне файрвола для IP, которые шлют запросы "GET /?[a-z]{16}".
+# Проверка фильтра на реальном логе:
+#   fail2ban-regex /var/log/nginx/access.log /etc/fail2ban/filter.d/nginx-random-query.conf
+
+[nginx-random-query]
+enabled  = true
+port     = http,https
+filter   = nginx-random-query
+logpath  = /var/log/nginx/access.log
+maxretry = 3
+findtime = 60
+bantime  = 3600
